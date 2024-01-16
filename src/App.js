@@ -1,5 +1,6 @@
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes, } from 'react-router-dom';
 import { QueryClientProvider, QueryClient } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 
 import { Home } from './components/Home';
 import { RQPlanets } from './components/RQPlanets';
@@ -32,6 +33,7 @@ function App() {
           <Route path='/' element={<Home />} />
         </Routes>
       </div>
+      <ReactQueryDevtools initialIsOpen={false} position='bottom-right' />
     </QueryClientProvider>
   );
 }
