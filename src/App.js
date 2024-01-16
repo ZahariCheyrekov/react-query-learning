@@ -3,6 +3,7 @@ import { QueryClientProvider, QueryClient } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
 import { Home } from './components/Home';
+import { ParallelQueries } from './components/ParallelQueries';
 import { Planets } from './components/Planets';
 import { RQPlanet } from './components/RQPlanet';
 import { RQPlanets } from './components/RQPlanets';
@@ -29,6 +30,7 @@ function App() {
           </ul>
         </nav>
         <Routes>
+          <Route path='/rq-parallel-queries' element={<ParallelQueries />} />
           <Route path='/planets' element={<Planets />} />
           <Route path='/rq-planets' element={<RQPlanets />} />
           <Route path='/rq-planets/:planetId' element={<RQPlanet />} />

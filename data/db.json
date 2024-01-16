@@ -142,5 +142,19 @@
                 }
             ]
         }
+    ],
+    "friends": [
+        {
+            "id": 9,
+            "name": "NINTH",
+            "age": 108,
+            "planet": "MAKEMAKE"
+        },
+        {
+            "id": 10,
+            "name": "TENTH",
+            "age": 109,
+            "planet": "CERES"
+        }
     ]
 }
