@@ -6,7 +6,7 @@ const fetchSuperHeroes = () => {
 }
 
 export const RQPlanets = () => {
-    const { isLoading, data: planets, isError, error } = useQuery('planets', fetchSuperHeroes);
+    const { isLoading, data: planets, isError, error } = useQuery('planets', fetchSuperHeroes, { cacheTime: 5000 });
 
     if (isError) {
         return <h2>{error.message}</h2>;
