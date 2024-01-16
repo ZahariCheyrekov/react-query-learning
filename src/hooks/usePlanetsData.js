@@ -1,8 +1,12 @@
 import axios from "axios";
-import { useQuery } from "react-query";
+import { useQuery, useMutation } from "react-query";
 
 const fetchPlanets = () => {
     return axios.get('http://localhost:4000/planets');
+}
+
+const addPlanet = (planet) => {
+    return axios.post('http://localhost:4000/planets', planet)
 }
 
 export const usePlanetsData = (onSuccess, onError) => {
@@ -14,4 +18,8 @@ export const usePlanetsData = (onSuccess, onError) => {
             onError
         }
     );
+}
+
+export const useAddPlanetData = (planet) => {
+    return useMutation(addPlanet);
 }
