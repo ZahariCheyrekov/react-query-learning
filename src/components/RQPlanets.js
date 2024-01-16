@@ -6,7 +6,11 @@ const fetchSuperHeroes = () => {
 }
 
 export const RQPlanets = () => {
-    const { isLoading, data: planets } = useQuery('planets', fetchSuperHeroes);
+    const { isLoading, data: planets, isError, error } = useQuery('planets', fetchSuperHeroes);
+
+    if (isError) {
+        return <h2>{error.message}</h2>;
+    }
 
     if (isLoading) {
         return <h1>Data is Loading...</h1>;
