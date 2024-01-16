@@ -1,5 +1,5 @@
 export const RQPlanets = () => {
     return (
-        <div>RQPlanets</div>
+        <h1>RQPlanets</h1>
     );
 }
