@@ -23,13 +23,28 @@ export const usePlanetsData = (onSuccess, onError) => {
 export const useAddPlanetData = (planet) => {
     const queryClinet = useQueryClient();
     return useMutation(addPlanet, {
-        onSuccess: (data) => {
+        onMutate: async (newPlanet) => {
+            await queryClinet.cancelQueries('planets');
+            const previousPlanetData = queryClinet.getQueryData('planets');
             queryClinet.setQueriesData('planets', (oldQueryData) => {
                 return {
                     ...oldQueryData,
-                    data: [...oldQueryData.data, data.data]
+                    data: [
+                        ...oldQueryData.data, {
+                            id: oldQueryData?.data?.length + 1, ...newPlanet
+                        },
+                    ]
                 }
             });
+            return {
+                previousPlanetData
+            }
+        },
+        onError: (error, planet, context) => {
+            queryClinet.setQueryData('planets', context.previousPlanetData);
+        },
+        onSettled: () => {
+            queryClinet.invalidateQueries('planets');
         }
     });
 }
