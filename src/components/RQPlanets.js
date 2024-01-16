@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { usePlanetsData } from "../hooks/usePlanetsData";
 
 export const RQPlanets = () => {
@@ -23,9 +24,14 @@ export const RQPlanets = () => {
         <>
             <h1>React Query Planets</h1>
             <button onClick={refetch}>Get Planets</button>
-            {planets.map((planet) => {
-                return <div key={planet}>{planet}</div>
+            {planets && planets?.data.map((planet) => {
+                return <div key={planet.id}>
+                    <Link to={`/rq-planets/${planet.id}`} >
+                        {planet.planet}
+                    </Link>
+                </div >
             })}
+
         </>
     );
 }

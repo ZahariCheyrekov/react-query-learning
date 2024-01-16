@@ -1,21 +1,17 @@
 import axios from "axios";
 import { useQuery } from "react-query";
 
-const fetchSuperHeroes = () => {
+const fetchPlanets = () => {
     return axios.get('http://localhost:4000/planets');
 }
 
 export const usePlanetsData = (onSuccess, onError) => {
     return useQuery(
         'planets',
-        fetchSuperHeroes,
+        fetchPlanets,
         {
             onSuccess,
-            onError,
-            select: (data) => {
-                const planets = data.data.map(planet => planet.planet);
-                return planets;
-            }
+            onError
         }
     );
 }

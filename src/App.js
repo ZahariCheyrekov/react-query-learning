@@ -3,8 +3,9 @@ import { QueryClientProvider, QueryClient } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
 import { Home } from './components/Home';
-import { RQPlanets } from './components/RQPlanets';
 import { Planets } from './components/Planets';
+import { RQPlanet } from './components/RQPlanet';
+import { RQPlanets } from './components/RQPlanets';
 
 import './App.css';
 
@@ -30,6 +31,7 @@ function App() {
         <Routes>
           <Route path='/planets' element={<Planets />} />
           <Route path='/rq-planets' element={<RQPlanets />} />
+          <Route path='/rq-planets/:planetId' element={<RQPlanet />} />
           <Route path='/' element={<Home />} />
         </Routes>
       </div>
