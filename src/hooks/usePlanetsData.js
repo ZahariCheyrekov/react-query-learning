@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useQuery, useMutation } from "react-query";
+import { useQuery, useMutation, useQueryClient } from "react-query";
 
 const fetchPlanets = () => {
     return axios.get('http://localhost:4000/planets');
@@ -21,5 +21,15 @@ export const usePlanetsData = (onSuccess, onError) => {
 }
 
 export const useAddPlanetData = (planet) => {
-    return useMutation(addPlanet);
+    const queryClinet = useQueryClient();
+    return useMutation(addPlanet, {
+        onSuccess: (data) => {
+            queryClinet.setQueriesData('planets', (oldQueryData) => {
+                return {
+                    ...oldQueryData,
+                    data: [...oldQueryData.data, data.data]
+                }
+            });
+        }
+    });
 }
