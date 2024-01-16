@@ -156,5 +156,31 @@
             "age": 109,
             "planet": "CERES"
         }
+    ],
+    "users": [
+        {
+            "id": 1,
+            "talent": "Drinking Water"
+        },
+        {
+            "id": 2,
+            "talent": "Not Drinking Water"
+        },
+        {
+            "id": 3,
+            "email": "test@example.com",
+            "platformId": "Master Spaster",
+            "talent": "Absolutely Not Drinking Water"
+        }
+    ],
+    "platforms": [
+        {
+            "id": "Master Spaster",
+            "courses": [
+                "Next",
+                "React",
+                "React Query"
+            ]
+        }
     ]
 }
