@@ -7,7 +7,7 @@ const fetchPlanets = ({ pageParam = 1 }) => {
 }
 
 export const InfiniteQueries = () => {
-    const { isLoading, data: planets, isError, error, isFetching, hasNextPage, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
+    const { isLoading, data: planets, isError, error, isFetching, hasNextPage, fetchNextPage } = useInfiniteQuery(
         'planets',
         fetchPlanets,
         {
