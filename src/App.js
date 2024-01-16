@@ -3,6 +3,7 @@ import { QueryClientProvider, QueryClient } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
 import { Home } from './components/Home';
+import { PaginationQueries } from './components/PaginationQueries';
 import { ParallelQueries } from './components/ParallelQueries';
 import { DynamicParallel } from './components/DynamicParallel';
 import { DependentQueries } from './components/DependentQueries';
@@ -32,13 +33,15 @@ function App() {
           </ul>
         </nav>
         <Routes>
+
+          <Route path='/' element={<Home />} />
+          <Route path='/rq-pagination' element={<PaginationQueries />} />
           <Route path='/rq-parallel-queries' element={<ParallelQueries />} />
           <Route path='/rq-dynamic-parallel' element={<DynamicParallel planetIds={[8, 9]} />} />
           <Route path='/rq-dependent' element={<DependentQueries userId={3} />} />
           <Route path='/planets' element={<Planets />} />
           <Route path='/rq-planets' element={<RQPlanets />} />
           <Route path='/rq-planets/:planetId' element={<RQPlanet />} />
-          <Route path='/' element={<Home />} />
         </Routes>
       </div>
       <ReactQueryDevtools initialIsOpen={false} position='bottom-right' />
